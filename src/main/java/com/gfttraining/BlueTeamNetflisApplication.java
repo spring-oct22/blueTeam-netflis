@@ -8,6 +8,7 @@ public class BlueTeamNetflisApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BlueTeamNetflisApplication.class, args);
+		System.out.println("buenos dias");
 	}
 
 }
