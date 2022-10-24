@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
@@ -43,21 +45,28 @@ public class Title {
 	@NotNull
 	@Min(0)
 	private Integer num_ratings;
-	@ManyToMany (mappedBy = "director")
-    Set<Director> directors;
-	@ManyToMany (mappedBy = "actor")
+	@ManyToMany
+	@JoinTable(name = "title_director", 
+			joinColumns = @JoinColumn(name = "tittle_id"), 
+			inverseJoinColumns = @JoinColumn(name = "director_id"))
+    Set<Director> director;
+	@ManyToMany 
+	@JoinTable(name = "title_actor", 
+			joinColumns = @JoinColumn(name = "title_id"), 
+			inverseJoinColumns = @JoinColumn(name = "actor_id"))	
     Set<Actor> actor;
-	@ManyToMany (mappedBy = "actor")
+	@ManyToMany
+	@JoinTable(name = "title_category", 
+			joinColumns = @JoinColumn(name = "title_id"), 
+			inverseJoinColumns = @JoinColumn(name = "category_id"))
     Set<Category> category;
 	
 	public Title() {}
-
-	
 	
 	public Title(@NotNull Integer id, @NotNull String name, @NotNull String date_added,
 			@NotNull @Range(min = 1900, max = 2022) String release_year, @NotNull String rating,
 			@NotNull String duration, @NotNull String description, @NotNull @Range(min = 0, max = 10) Float user_rating,
-			@NotNull @Min(0) Integer num_ratings, Set<Director> directors, Set<Actor> actor, Set<Category> category) {
+			@NotNull @Min(0) Integer num_ratings, Set<Director> director, Set<Actor> actor, Set<Category> category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -68,12 +77,10 @@ public class Title {
 		this.description = description;
 		this.user_rating = user_rating;
 		this.num_ratings = num_ratings;
-		this.directors = directors;
+		this.director = director;
 		this.actor = actor;
 		this.category = category;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -148,11 +155,11 @@ public class Title {
 	}
 
 	public Set<Director> getDirectors() {
-		return directors;
+		return director;
 	}
 
-	public void setDirectors(Set<Director> directors) {
-		this.directors = directors;
+	public void setDirectors(Set<Director> director) {
+		this.director = director;
 	}
 
 	public Set<Actor> getActor() {
@@ -177,7 +184,7 @@ public class Title {
 	public String toString() {
 		return "Title [id=" + id + ", name=" + name + ", date_added=" + date_added + ", release_year=" + release_year
 				+ ", rating=" + rating + ", duration=" + duration + ", description=" + description + ", user_rating="
-				+ user_rating + ", num_ratings=" + num_ratings + ", directors=" + directors + "]";
+				+ user_rating + ", num_ratings=" + num_ratings + ", directors=" + director + "]";
 	}	
 	
 	
