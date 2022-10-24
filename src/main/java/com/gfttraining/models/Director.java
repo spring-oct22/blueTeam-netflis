@@ -1,11 +1,15 @@
 package com.gfttraining.models;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "director")
@@ -16,7 +20,9 @@ public class Director {
 	@NotNull
 	private Integer id;
 	@NotNull
-	private String name;
+	private String name;	
+	@ManyToMany (mappedBy = "title")
+    Set<Title> titles;
 	
 	public Director() {}
 	
