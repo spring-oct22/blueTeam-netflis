@@ -15,6 +15,24 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfiguration {
 	
+	
+	
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {		
+
+		
+		http
+			.authorizeHttpRequests((request)-> request. antMatchers(HttpMethod.GET).permitAll()
+														.antMatchers(HttpMethod.POST, "/**").hasRole("USER")
+														.antMatchers(HttpMethod.PUT, "/**").hasRole("USER")
+														.antMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN"))
+														//.anyRequest().authenticated())
+			.formLogin((form) -> form.loginPage("/login").permitAll())
+			.logout((logout) -> logout.permitAll());										
+		
+		return http.build();
+	}
+	
 	@Bean
 	public UserDetailsManager userDetailsManager() {
 		UserDetails regularUser = User.withDefaultPasswordEncoder()
@@ -32,23 +50,8 @@ public class WebSecurityConfiguration {
 		return new InMemoryUserDetailsManager(regularUser,adminUser);
 		
 	}
-	
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {		
+		
 
-		
-		http
-			.authorizeHttpRequests((request)-> request. antMatchers(HttpMethod.GET).permitAll()
-														.antMatchers(HttpMethod.POST, "/**").hasRole("USER")
-														.antMatchers(HttpMethod.PUT, "/**").hasRole("USER")
-														.antMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN"))
-														/*.anyRequest().authenticated())*/
-			.formLogin(form -> form.loginPage("/login").permitAll())
-			.logout((logout) -> logout.permitAll());										
-		
-		return http.build();
-			
-	}
 	
 	
 	
