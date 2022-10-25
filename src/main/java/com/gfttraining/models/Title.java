@@ -47,7 +47,7 @@ public class Title {
 	private Integer num_ratings;
 	@ManyToMany
 	@JoinTable(name = "title_director", 
-			joinColumns = @JoinColumn(name = "tittle_id"), 
+			joinColumns = @JoinColumn(name = "title_id"), 
 			inverseJoinColumns = @JoinColumn(name = "director_id"))
     Set<Director> director;
 	
