@@ -54,7 +54,9 @@ public class Director {
 	@Override
 	public String toString() {
 		return "Director [id=" + id + ", name=" + name + "]";
-	}	
+	}
+
+		
 	
 	
 	
