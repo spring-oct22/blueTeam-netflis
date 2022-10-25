@@ -23,11 +23,7 @@ public class Director {
 	private Integer id;
 	@NotNull
 	private String name;	
-	@ManyToMany
-	@JoinTable(name = "title_director", 
-	joinColumns = @JoinColumn(name = "director_id"), 
-	inverseJoinColumns = @JoinColumn(name = "title_id"))
-    Set<Title> title;
+	
 	
 	public Director() {}
 	
@@ -35,7 +31,7 @@ public class Director {
 		super();
 		this.id = id;
 		this.name = name;
-		this.title = title;
+		
 	}
 
 	public Integer getId() {
@@ -54,17 +50,10 @@ public class Director {
 		this.name = name;
 	}
 
-	public Set<Title> getTitles() {
-		return title;
-	}
-
-	public void setTitles(Set<Title> title) {
-		this.title = title;
-	}
 
 	@Override
 	public String toString() {
-		return "Director [id=" + id + ", name=" + name + ", titles=" + title + "]";
+		return "Director [id=" + id + ", name=" + name + "]";
 	}	
 	
 	

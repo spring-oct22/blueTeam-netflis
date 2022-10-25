@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table (name = "title")
-@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class Title {
 
 	@Id
@@ -50,11 +50,13 @@ public class Title {
 			joinColumns = @JoinColumn(name = "tittle_id"), 
 			inverseJoinColumns = @JoinColumn(name = "director_id"))
     Set<Director> director;
+	
 	@ManyToMany 
 	@JoinTable(name = "title_actor", 
 			joinColumns = @JoinColumn(name = "title_id"), 
 			inverseJoinColumns = @JoinColumn(name = "actor_id"))	
     Set<Actor> actor;
+	
 	@ManyToMany
 	@JoinTable(name = "title_category", 
 			joinColumns = @JoinColumn(name = "title_id"), 
