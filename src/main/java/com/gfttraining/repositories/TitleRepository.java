@@ -21,8 +21,8 @@ public interface TitleRepository extends JpaRepository<Title, Integer> {
 	  
 	  
 	  
-	  @Query("SELECT t FROM Title t INNER JOIN title_director td ON t.id = td.title_id WHERE td.director_id = :id")
-	  public List<Title> findTitleByDirector(Integer id); 
+	  /*@Query("SELECT t FROM Title t INNER JOIN title_director td ON t.id = td.title_id WHERE td.director_id = :id")
+	  public List<Title> findTitleByDirector(Integer id); */
 	  
 	  
 	  
@@ -53,5 +53,5 @@ public interface TitleRepository extends JpaRepository<Title, Integer> {
 
 	  @Query(value = "SELECT * FROM title INNER JOIN title_category on title.id = title_category.title_id WHERE title_category.category_id = :id order by user_rating desc  LIMIT :limit", nativeQuery = true)
 	  public List<Title> recommendBestTitlesByCategory(Integer id, Integer limit);*/
-	}
 }
+
