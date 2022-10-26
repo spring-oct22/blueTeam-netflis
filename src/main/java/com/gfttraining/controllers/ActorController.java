@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gfttraining.models.Actor;
@@ -40,16 +41,24 @@ public class ActorController {
 		return actorService.newActor(Actor);
 	}
 	
-	@PutMapping("/api/Actor/{id}")
+	@PutMapping("/api/actors/{id}")
 	public Actor putActor(@RequestBody Actor Actor, @PathVariable Integer id) {	
 		
 		return actorService.changeActor(Actor,id);		
 		
 	}
 	
-	@DeleteMapping ("/api/Actor/{id}")
+	@DeleteMapping ("/api/actors/{id}")
 	public void deleteActor(@PathVariable Integer id) {
 		actorService.deleteMyActor(id);
 		
+	}
+	
+	
+	//Endpoints
+	
+	@GetMapping ("/api/endpoint/actor")
+	public List<Actor> actorByName(@RequestParam(name = "name") String name) {
+		return actorService.getActorsName(name);
 	}
 }
