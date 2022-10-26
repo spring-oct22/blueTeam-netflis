@@ -17,7 +17,7 @@ import org.springframework.security.config.Customizer;
 @EnableWebSecurity
 public class WebSecurityConfiguration {
 	
-	
+
 	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {		
@@ -54,5 +54,7 @@ public class WebSecurityConfiguration {
 		return new InMemoryUserDetailsManager(regularUser,adminUser);
 		
 	}	
+	
+	
 
 }

@@ -33,9 +33,7 @@ public class DirectorController {
 	public  Director getDirectorById(@PathVariable Integer id) {
 		
 		Director director = directorService.findOneDirector(id);
-		return director;
-		
-					
+		return director;					
 		
 	}		
 		
