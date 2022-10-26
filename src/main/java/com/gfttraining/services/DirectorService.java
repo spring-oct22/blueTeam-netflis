@@ -1,10 +1,11 @@
 package com.gfttraining.services;
 
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import com.gfttraining.models.Actor;
 import com.gfttraining.models.Director;
 import com.gfttraining.repositories.DirectorRepository;
 
@@ -19,7 +20,14 @@ public class DirectorService {
 	//Find All 	
 	public List<Director> findAllDirectors() {			
 		return directorRepository.findAll();
+	
 		}
+	
+	//Pageable
+	public Page<Director> findAllPageableDirectors (Pageable pageable){
+		return directorRepository.findAll(pageable);
+	}
+	
 
 	//Find by ID
 	public Director findOneDirector(Integer id) {		

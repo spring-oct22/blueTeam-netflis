@@ -2,8 +2,9 @@ package com.gfttraining.services;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.gfttraining.models.Actor;
 import com.gfttraining.repositories.ActorRepository;
 
@@ -19,6 +20,12 @@ public class ActorService {
 	public List<Actor> findAllActors() {			
 		return actorRepository.findAll();
 		}
+	
+	//Pageable
+		public Page<Actor> findAllPageableActors (Pageable pageable){
+			return actorRepository.findAll(pageable);
+		}
+		
 
 	//Find by ID
 	public Actor findOneActor(Integer id) {		

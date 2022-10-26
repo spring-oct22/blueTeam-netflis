@@ -3,6 +3,8 @@ package com.gfttraining.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.gfttraining.models.Title;
 import com.gfttraining.repositories.TitleRepository;
@@ -18,6 +20,12 @@ public class TitleService {
 	public List<Title> findAllTitles() {			
 		return titleRepository.findAll();
 		}
+	
+	//Pageable
+		public Page<Title> findAllPageableTitles (Pageable pageable){
+			return titleRepository.findAll(pageable);
+		}
+		
 
 	//Find by ID
 	public Title findOneTitle(Integer id) {		

@@ -3,10 +3,10 @@ package com.gfttraining.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.gfttraining.models.Category;
-import com.gfttraining.models.Director;
 import com.gfttraining.repositories.CategoryRepository;
 
 
@@ -17,10 +17,15 @@ public class CategoryService {
 	private CategoryRepository categoryRepository;
 	
 	
-	//Find All 	
+		//Find All 	
 		public List<Category> findAllCategorys() {			
 			return categoryRepository.findAll();
 			}
+		//Pageable
+		public Page<Category> findAllPageableCategories (Pageable pageable){
+			return categoryRepository.findAll(pageable);
+		}
+		
 
 		//Find by ID
 		public Category findOneCategory(Integer id) {		
