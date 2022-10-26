@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import com.gfttraining.models.Title;
 import com.gfttraining.repositories.TitleRepository;
 
@@ -62,6 +63,53 @@ public class TitleService {
 	public  Title deleteMyTitle(Integer id) {
 		Title title = titleRepository.findById(id).get();
 		titleRepository.deleteById(id);
+		return title;
+	}
+	
+	//ENDPOINTS
+	
+	public List<Title> getTitleName(String name) {
+		
+		List<Title> title = titleRepository.findTitleByName(name);
+		return title;
+	}
+	public List<Title> getTitleByReleaseYear(String releaseYear) {
+		
+		List<Title> title = titleRepository.findTitleByReleaseYear(releaseYear);
+		return title;
+	}
+	public List<Title> getTitleByDescription(String description) {
+			
+		List<Title> title = titleRepository.findTitleByDescription(description);
+		return title;
+	}
+	public List<Title> getTitleByDirector(Integer id) {
+		
+		List<Title> title = titleRepository.findTitleByDirector(id);
+		return title;
+	}
+	public List<Title> getTitleByActor(Integer id) {
+		
+		List<Title> title = titleRepository.findTitleByActor(id);
+		return title;
+	}
+	public List<Title> getTitleByCategory(Integer id) {
+		
+		List<Title> title = titleRepository.findTitleByCategory(id);
+		return title;
+	}
+	
+	
+	//RECOMMENDS
+	
+	public List<Title> getrecommedBestTitles(Integer limit) {
+		
+		List<Title> title = titleRepository.recommedBestTitles(limit);
+		return title;
+	}
+	public List<Title> getrecommendBestTitlesByCategory(Integer id, Integer limit) {
+		
+		List<Title> title = titleRepository.recommendBestTitlesByCategory(id,limit);
 		return title;
 	}
 
