@@ -13,6 +13,7 @@ import com.gfttraining.models.Actor;
 @Repository
 @Transactional
 public interface ActorRepository extends JpaRepository  <Actor, Integer>{
-	@Query("select a from Actor a order by a.name")
+	@Query("select a from Actor a where a.name = :name") //?1
 	List<Actor> getActorsByName(String name);
+
 }

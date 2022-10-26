@@ -3,6 +3,8 @@ package com.gfttraining.services;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.gfttraining.models.Actor;
 import com.gfttraining.models.Director;
 import com.gfttraining.repositories.DirectorRepository;
 
@@ -46,6 +48,13 @@ public class DirectorService {
 	public  Director deleteMyDirector(Integer id) {
 		Director director = directorRepository.findById(id).get();
 		directorRepository.deleteById(id);
+		return director;
+	}
+	
+	//Endpoints director
+	public List<Director> getDirectorsName(String name) {
+	
+		List<Director> director = directorRepository.getDirectorsByName(name);
 		return director;
 	}
 
