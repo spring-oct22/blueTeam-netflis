@@ -40,14 +40,14 @@ public class TitleController {
 		return titleService.newTitle(title);
 	}
 	
-	@PutMapping("/api/title/{id}")
+	@PutMapping("/api/titles/{id}")
 	public Title putTitle(@RequestBody Title title, @PathVariable Integer id) {	
 		
 		return titleService.changeTitle(title,id);		
 		
 	}
 	
-	@DeleteMapping ("/api/title/{id}")
+	@DeleteMapping ("/api/titles/{id}")
 	public void deleteTitle(@PathVariable Integer id) {
 		titleService.deleteMyTitle(id);
 		

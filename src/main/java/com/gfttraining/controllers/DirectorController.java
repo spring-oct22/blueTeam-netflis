@@ -43,14 +43,14 @@ public class DirectorController {
 		return new ResponseEntity<>(directorService.newDirector(director), HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/api/director/{id}")
+	@PutMapping("/api/directors/{id}")
 	public Director putDirector(@RequestBody Director director, @PathVariable Integer id) {	
 		
 		return directorService.changeDirector(director,id);		
 		
 	}
 	
-	@DeleteMapping ("/api/director/{id}")
+	@DeleteMapping ("/api/directors/{id}")
 	public void deleteDirector(@PathVariable Integer id) {
 		directorService.deleteMyDirector(id);
 		

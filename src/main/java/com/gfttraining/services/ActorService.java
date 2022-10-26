@@ -3,6 +3,7 @@ package com.gfttraining.services;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.gfttraining.models.Actor;
 import com.gfttraining.repositories.ActorRepository;
 
@@ -46,6 +47,14 @@ public class ActorService {
 	public Actor deleteMyActor(Integer id) {
 		Actor actor = actorRepository.findById(id).get();
 		actorRepository.deleteById(id);
+		return actor;
+	}
+	
+	
+	public List<Actor> getActorsName(String name) {
+
+		
+		List<Actor> actor = actorRepository.getActorsByName(name);
 		return actor;
 	}
 
