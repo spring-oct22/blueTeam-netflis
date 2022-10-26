@@ -1,4 +1,4 @@
-package com.gfttraining.security;
+/*package com.gfttraining.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -13,4 +13,4 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/logout").setViewName("logout");
 	}
 
-}
+}*/
