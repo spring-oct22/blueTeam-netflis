@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gfttraining.models.Category;
+import com.gfttraining.models.Director;
 import com.gfttraining.repositories.CategoryRepository;
 
 
@@ -48,6 +49,14 @@ public class CategoryService {
 		public Category deleteMyCategory(Integer id) {
 			Category category = categoryRepository.findById(id).get();
 			categoryRepository.deleteById(id);
+			return category;
+		}
+		
+		
+		//Endpoints category
+		public List<Category> getCategorysName(String name) {
+		
+			List<Category> category = categoryRepository.getCategorysByName(name);
 			return category;
 		}
 

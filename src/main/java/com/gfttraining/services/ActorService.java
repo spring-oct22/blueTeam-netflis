@@ -51,9 +51,9 @@ public class ActorService {
 	}
 	
 	
+	//Endpoints actor
 	public List<Actor> getActorsName(String name) {
-
-		
+	
 		List<Actor> actor = actorRepository.getActorsByName(name);
 		return actor;
 	}
