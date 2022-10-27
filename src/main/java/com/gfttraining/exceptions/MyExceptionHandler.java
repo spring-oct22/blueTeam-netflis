@@ -16,7 +16,7 @@ public class MyExceptionHandler extends ResponseEntityExceptionHandler{
 	
 	@ExceptionHandler (NotFoundException.class)
 	public final ResponseEntity <Object> handlerUserNotFoundException(Exception ex, WebRequest request){
-		Exception exception = new Exception(ex.getMessage(), request.getDescription(true));
+		AllException exception = new AllException(ex.getMessage(), request.getDescription(false));
 		
 		return new ResponseEntity <>(exception, HttpStatus.NOT_FOUND);
 	}

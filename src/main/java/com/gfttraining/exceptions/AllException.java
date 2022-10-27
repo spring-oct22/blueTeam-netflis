@@ -1,14 +1,14 @@
 package com.gfttraining.exceptions;
 
 
-public class Exception{
+public class AllException{
 	
 	private String message;
 	private String status;
 	
-	public Exception() {}
+	public AllException() {}
 
-	public Exception(String message, String status) {
+	public AllException(String message, String status) {
 		super();
 		this.message = message;
 		this.status = status;

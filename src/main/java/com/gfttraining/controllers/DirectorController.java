@@ -45,7 +45,7 @@ public class DirectorController {
 			
 			List<Director> allExistingDirectors = directorService.findAllDirectors();
 			Director director = directorService.findOneDirector(id);
-			
+			//
 						
 			if(!allExistingDirectors.contains(director)){
 				System.out.println("not found");
