@@ -34,6 +34,8 @@ public class DirectorService {
 		return directorRepository.findById(id).get();
 	}
 	
+	
+	
 	//Create - POST
 	public	Director newDirector (Director director) {
 		return directorRepository.save(director);
