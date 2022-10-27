@@ -97,5 +97,14 @@ public class TitleController {
         return titleService.getTitleByCategory(id);
 
     }
+    
+    //Recommend
+    
+    @GetMapping("/api/titles/best")
+	public List<Title> gotrecommedBestTitles(@RequestParam(name = "limit", defaultValue = "10") Integer limit) {
+		
+		List<Title> title = titleService.getrecommedBestTitles(limit);
+		return title;
+	}
 }
 

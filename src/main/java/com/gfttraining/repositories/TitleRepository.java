@@ -35,7 +35,7 @@ public interface TitleRepository extends JpaRepository<Title, Integer> {
 	  //RECOMMEND
 
 	  @Query("SELECT t FROM Title t ORDER BY t.user_rating DESC")
-	  public List<Title> recommedBestTitles(Integer limit);
+	  public List<Title> recommedBestTitles();
 
 	  @Query(value = "SELECT * FROM title INNER JOIN title_category on title.id = title_category.title_id WHERE title_category.category_id = :id order by user_rating desc  LIMIT :limit", nativeQuery = true)
 	  public List<Title> recommendBestTitlesByCategory(Integer id, Integer limit);

@@ -104,7 +104,7 @@ public class TitleService {
 	
 	public List<Title> getrecommedBestTitles(Integer limit) {
 		
-		List<Title> title = titleRepository.recommedBestTitles(limit);
+		List<Title> title = titleRepository.recommedBestTitles().subList(0, limit);
 		return title;
 	}
 	public List<Title> getrecommendBestTitlesByCategory(Integer id, Integer limit) {
