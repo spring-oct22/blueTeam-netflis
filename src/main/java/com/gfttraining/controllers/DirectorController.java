@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gfttraining.exceptions.NotFoundException;
 import com.gfttraining.models.Director;
+import com.gfttraining.repositories.DirectorRepository;
 import com.gfttraining.services.DirectorService;
 
 @RestController
 public class DirectorController {
 	
-		
+	@Autowired
+	private DirectorRepository directorRepository;
+	
 	@Autowired
 	private DirectorService directorService;
 	
@@ -43,21 +46,17 @@ public class DirectorController {
 	@GetMapping ("/api/directors/{id}")
 	public  ResponseEntity<Director>  getDirectorById(@PathVariable Integer id) {
 			
-			List<Director> allExistingDirectors = directorService.findAllDirectors();
-			Director director = directorService.findOneDirector(id);
-			//
+		try {
 						
-			if(!allExistingDirectors.contains(director)){
-				System.out.println("not found");
-				throw new NotFoundException ("Not Found");
-				 
-				
-			}else {
-				System.out.println("ok");
-				return new ResponseEntity<>(director, HttpStatus.OK); 
-				
-			}
+			Director director = directorService.findOneDirector(id);
 			
+			return new ResponseEntity<>(director, HttpStatus.OK);
+	                
+	            
+		}catch (Exception e) {
+			
+			throw new NotFoundException ("Not Found"); 
+		}
 	}		
 		
 	@PostMapping ("/api/directors")

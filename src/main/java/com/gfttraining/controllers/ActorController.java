@@ -42,11 +42,12 @@ public class ActorController {
 
 	@GetMapping ("/api/actors/{id}")
 	ResponseEntity<Actor> getActorrById(@PathVariable Integer id) {
-		Actor actor= actorService.findOneActor(id);
+		
 		try {
+			Actor actor= actorService.findOneActor(id);
 			return new ResponseEntity<>(actor, HttpStatus.OK);
 		}catch(Exception e) {
-			return new ResponseEntity<>(actor, HttpStatus.NOT_FOUND);
+			return ResponseEntity.notFound().build();
 		}
 	    
 	} 
